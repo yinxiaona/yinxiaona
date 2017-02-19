@@ -6,13 +6,17 @@ app.controller("foodCtrl",['$scope',"$http",function($scope,$http){
 	$scope.change=function(item){
 			$scope.flag=$scope.items==item?!$scope.flag:false;
 			$scope.items=item;
+
 			if(!$scope.flag){
-				$(".aside").fadeIn();
+				$(".bigbox").show();
 			}else{
-				$(".aside").fadeOut();
-			}
+				$(".bigbox").hide();
 			}
 
+			}
+
+
+	//三角样式
 	$scope.getClass=function(ite){
 				if($scope.items==ite){
 					return $scope.flag;
@@ -20,7 +24,7 @@ app.controller("foodCtrl",['$scope',"$http",function($scope,$http){
 					return !$scope.flag;
 				}
 		}
-
+	//获取区属
 	$http.get("js/restaurants.json")
 			.success(function(data){
 			$scope.data=data;
@@ -28,12 +32,20 @@ app.controller("foodCtrl",['$scope',"$http",function($scope,$http){
 			})
 
 
-	//实现下拉的功能
+	//实现点击遮罩层将盒子隐藏
 	$scope.remove=function(){
-		$(".aside").hide();
+		$scope.flag=true;
+		$(".bigbox").hide();
+
 	}
 
+
+
 }])
+
+app.run(function($rootScope){
+	$rootScope.title='排序';
+})
 
 
 app.config(function($stateProvider,$urlRouterProvider){
@@ -43,32 +55,28 @@ app.config(function($stateProvider,$urlRouterProvider){
 				.state('food',{
 					url:'/food',  //显示在地址栏里面
 					templateUrl:'./page/food.html',
-					controller:'foods',
 
 				})
 				.state('sort',{
 					url:'/sort',
 					templateUrl:'./page/sort.html',
-					controller:'sort',
-					resolve:{
-						query:function($http){
-							return $http.get("js/restaurants.json")
-						}
-					}
+					controller:'sorts'
 				})
 				.state('filter',{
 					url:'/filter',
-					templateUrl:'./page/filter.html'
+					templateUrl:'./page/filter.html',
 				})
 
 		})
 
-//sort页面
-var Sapp=angular.module("foodList",['ui.router']);
+app.controller("sorts",function($scope,$rootScope){
+	//排序
+	$scope.change=function(items){
+		$rootScope.title=items;
+	}
 
-	Sapp.config(function($stateProvider,$urlRouterProvider){
+})
 
-		console.log($stateProvider)
-			// .state("")
-	})
+
+
 

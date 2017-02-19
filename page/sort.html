@@ -1,12 +1,13 @@
-<div class="aside"  >
-	<div class="sort" ng-controller='sort'>
+<div class="bigbox">
+<div class="aside" ng-click='remove()' ></div>
+	<div class="sort" >
 		<ul>
-			<li  ng-click='change()'>智能排序</li>
-			<li>距离最近</li>
-			<li>销量最高</li>
-			<li>起送价最低</li>
-			<li>配送速度最快</li>
-			<li>评分最高</li>
+			<li  ng-click="change('智能排序')" >智能排序</li>
+			<li  ng-click="change('距离最近')" >距离最近</li>
+			<li  ng-click="change('销量最高')" >销量最高</li>
+			<li  ng-click="change('起送价最低')" >起送价最低</li>
+			<li  ng-click="change('配送速度最快')" >配送速度最快</li>
+			<li  ng-click="change('评分最高')" >评分最高</li>
 		</ul>
 	</div>
 </div>

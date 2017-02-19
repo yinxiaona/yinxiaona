@@ -20,8 +20,8 @@
 			</header>
 		  <nav >
 			<ul class="nav">
-					<li ng-click='change("food")'><a ui-sref='food' ui-sref-active='active' >分类<span  ng-class='{true:"up",false:"down"}[getClass("food")]' ></span></a></li>
-					<li class="center" ng-click='change("sort")' ><a ui-sref='sort'  ui-sref-active='active' >排序<span ng-class='{true:"up",false:"down"}[getClass("sort")]' ></span></a></li>
+					<li ng-click='change("food")'><a ui-sref='food' ui-sref-active='active' >分类<span  ng-class='{true:"up",false:"down"}[getClass("food")]'></span></a></li>
+					<li class ='center' ng-click='change("sort")' ><a ui-sref='sort'  ui-sref-active='active' >{{title}}<span ng-class='{true:"up",false:"down"}[getClass("sort")]' ></span></a></li>
 					<li  ng-click='change("filter")'><a ui-sref='filter' ui-sref-active='active' >筛选<span  ng-class='{true:"up",false:"down"}[getClass("filter")]'></span></a></li>
 			</ul>
 
@@ -37,7 +37,7 @@
 						<p><img src="images/start.png" alt=""><span class="score">{{item.rating
 					}}</span>
 						月销售{{item.recent_order_num}}单</p>
-						<p><span>￥20元起送</span> / <span>{{item.piecewise_agent_fee.tips
+						<p><span>￥{{item.float_minimum_order_amount}}起送</span> / <span>{{item.piecewise_agent_fee.tips
 
 				}}</span></p>
 					</dd>
