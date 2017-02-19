@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="dist/style.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+</head>
+<body ng-app='foodApp'ng-controller='foodCtrl' >
+	<div class="wrap">
+		<div class="top">
+			<header class="header">
+				<span class="icon icon-angle-left"></span>
+				<span>美食</span>
+				<span></span>
+			</header>
+		  <nav >
+			<ul class="nav">
+					<li ng-click='change("food")'><a ui-sref='food' ui-sref-active='active' >分类<span  ng-class='{true:"up",false:"down"}[getClass("food")]' ></span></a></li>
+					<li class="center" ng-click='change("sort")' ><a ui-sref='sort'  ui-sref-active='active' >排序<span ng-class='{true:"up",false:"down"}[getClass("sort")]' ></span></a></li>
+					<li  ng-click='change("filter")'><a ui-sref='filter' ui-sref-active='active' >筛选<span  ng-class='{true:"up",false:"down"}[getClass("filter")]'></span></a></li>
+			</ul>
+
+				</nav>
+
+
+		</div>
+		<div class="content" >
+			<dl class="list" ng-repeat='item in data'>
+				<dt><img src="//fuss10.elemecdn.com/9/b0/770a2ce429db6bd081c7f432c32d1jpeg.jpeg?imageMogr/format/webp/" alt=""></dt>
+					<dd class="center">
+						<h2><span>品牌</span>{{item.name}}</h2>
+						<p><img src="images/start.png" alt=""><span class="score">{{item.rating
+					}}</span>
+						月销售{{item.recent_order_num}}单</p>
+						<p><span>￥20元起送</span> / <span>{{item.piecewise_agent_fee.tips
+
+				}}</span></p>
+					</dd>
+			<dd class="right">
+				<p class="txt"><span ng-repeat ='value in item.supports'>{{value.icon_name}}</span></p>
+				<p><span class="confirm" >准时达</span><span class="send" ng-if=item.delivery_mode.is_solid>{{item.delivery_mode.text}}</span></p>
+				<p><span class="root">{{item.distance}}m/</span><span class="minu">{{item.order_lead_time}}分钟</span></p>
+			</dd>
+			</dl>
+		</div>
+
+		<div ui-view>
+
+		</div>
+
+	</div>
+
+
+
+<script src="js/zepto.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/js.js"></script>
+</body>
+</html>
