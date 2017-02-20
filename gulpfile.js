@@ -11,7 +11,7 @@ var gulp=require("gulp"),
 		.pipe(sass())
 		.pipe(minify())
 		.pipe(gulp.dest("dist/"))
-	})
+	});
 
 	gulp.task("server",function(){
 		gulp.watch("css/style.scss",['css']);
